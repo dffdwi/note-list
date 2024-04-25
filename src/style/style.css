@@ -1,0 +1,378 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: background 0.3s ease-in;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+}
+
+:root {
+  --background-color: #fbf3d5;
+  --font-color: black;
+}
+
+[data-theme="dark"] {
+  --font-color: white;
+  --background-color: #333;
+}
+
+input,
+textarea {
+  padding: 12px;
+  margin: 12px 0;
+  font-family: "Inter", sans-serif;
+  background-color: #efbc9b;
+  color: #000000;
+  border: 1px solid #d6dac8;
+  border-radius: 6px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaaaaa;
+  font-weight: bold;
+}
+
+.note-app__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #d6dac8;
+  padding: 16px;
+  margin-right: 5px;
+}
+
+.note-app__header h1 {
+  margin: 8px 0;
+  flex: 1;
+  color: #9cafaa;
+}
+
+.note-app__body {
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 24px;
+}
+
+.note-app__body h2 {
+  font-weight: bold;
+  margin: 24px 0;
+  color: #9cafaa;
+}
+
+.note-input {
+  margin: 0 auto;
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+
+.note-input input,
+.note-input textarea {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+.note-input__title {
+  font-weight: bold;
+  color: #9cafaa;
+}
+
+.note-input__title__char-limit {
+  font-size: 14px;
+  text-align: right;
+  color: #aaaaaa;
+}
+
+.note-input__body {
+  min-height: 200px;
+}
+
+.note-input button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  font-family: "Inter", sans-serif;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.note-input button:hover {
+  background-color: #388e3c;
+}
+
+.notes-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(min-content, max-content);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.notes-list__empty-message {
+  text-align: center;
+  color: #aaaaaa;
+}
+
+.note-item {
+  border: 1px solid #d6dac8;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.note-item__content {
+  padding: 16px;
+  flex: 1;
+}
+
+.note-item__title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  color: #000000;
+}
+
+.note-item__date {
+  font-size: 12px;
+  margin-bottom: 12px;
+  color: #aaaaaa;
+}
+
+.note-item__body {
+  font-size: 14px;
+  color: var(--font-color);
+}
+
+.note-item__action {
+  display: flex;
+}
+
+.note-item__delete-button,
+.note-item__archive-button {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  border-top: 1px solid #d6dac8;
+  padding: 12px 0;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.note-item__delete-button {
+  border-right: 1px solid #d6dac8;
+  color: #ff5f52;
+}
+
+.note-item__archive-button {
+  color: #f9a825;
+}
+
+.note-item__archive-button:hover {
+  color: #c49000;
+}
+
+.note-item__delete-button:hover {
+  color: #b00020;
+}
+
+.note-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.note-detail h1 {
+  margin-bottom: 10px;
+  color: var(--font-color);
+}
+
+.note-detail p {
+  margin-bottom: 10px;
+  color: var(--font-color);
+}
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.not-found-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.not-found-message {
+  font-size: 18px;
+  color: #666;
+}
+
+.nav {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: 0.15s ease-in;
+}
+
+.nav svg {
+  width: 24px;
+  height: 24px;
+  color: #9cafaa;
+}
+
+.nav:hover {
+  box-sizing: content-box;
+  border-color: #efbc9b;
+  border-radius: 12px;
+}
+
+.nav.active {
+  border-radius: 12px;
+  background-color: #efbc9b;
+}
+
+.nav-logout {
+  margin-right: 5px;
+  padding: 10px;
+  border: #efbc9b;
+  border-radius: 12px;
+  transition: 0.15s ease-in;
+}
+
+.nav-logout svg {
+  width: 24px;
+  height: 24px;
+  color: red;
+}
+
+.nav-logout:hover {
+  border-radius: 12px;
+  background-color: red;
+}
+
+.nav-logout:hover svg {
+  color: white;
+}
+
+@media only screen and (min-width: 500px) {
+  .notes-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .notes-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .note-search input {
+    min-width: 400px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.login-page h2,
+.register-page h2 {
+  font-weight: bold;
+  text-align: center;
+  margin: 25px;
+}
+
+.login-page p,
+.register-page p {
+  font-weight: normal;
+  text-align: center;
+}
+
+.login-input,
+.register-input {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.login-input input,
+.register-input input {
+  display: block;
+  padding: 16px;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 24px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.login-input button,
+.register-input button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 24px;
+  background-color: tan;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.toggle-button {
+  background: transparent;
+  color: #9cafaa;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.toggle-button:hover {
+  color: #efbc9b;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+}
